@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@prisma/client": "^5.1.1",
     "@types/node": "20.5.0",
     "@types/react": "18.2.20",
     "@types/react-dom": "18.2.7",
@@ -29,6 +30,7 @@
     "@babel/core": "^7.22.10",
     "@babel/plugin-proposal-decorators": "^7.22.10",
     "@types/jest": "^29.5.3",
-    "babel-plugin-transform-typescript-metadata": "^0.3.2"
+    "babel-plugin-transform-typescript-metadata": "^0.3.2",
+    "prisma": "^5.1.1"
   }
 }
