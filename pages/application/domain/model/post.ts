@@ -4,8 +4,7 @@ export default class Post {
   private content: string;
   private author: string;
 
-  constructor(id: string, title: string, content: string, author: string) {
-    this.id = id;
+  constructor(title: string, content: string, author: string) {
     this.title = title;
     this.content = content;
     this.author = author;
