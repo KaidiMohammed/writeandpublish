@@ -1,5 +1,6 @@
 import { Quill } from './components/TextEditors/Quill';
 import { Post } from './components/post';
+import { headers } from 'next/headers';
 
 export default async function Page() {
   const posts = await getPosts();
@@ -19,8 +20,10 @@ export default async function Page() {
 
 async function getPosts() {
   'use server';
-  const res = await fetch(process.env.HOST_URL ?? '' + '/api/post/get', {
-    cache: 'no-cache',
+  const host = headers().get('host');
+  const protocal = process?.env.NODE_ENV === 'development' ? 'http' : 'https';
+  let res = await fetch(`${protocal}://${host}/api/post/get`, {
+    cache: 'no-store',
   });
   if (!res.ok) {
     throw new Error('Failed to fetch data');
