@@ -1,4 +1,4 @@
-import Post from "@/pages/application/domain/model/post";
+import Post from "@/src/application/domain/model/post";
 import { PersistPostInDatabase } from "../../interfaces/persistPostInDatabase";
 import { injectable } from "inversify";
 import { PrismaClient } from "../client/prismaClient";

@@ -8,6 +8,7 @@ export default class Post {
     this.title = title;
     this.content = content;
     this.author = author;
+    this.id = "";
   }
 
   public getId() {

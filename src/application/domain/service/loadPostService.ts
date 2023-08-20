@@ -2,7 +2,7 @@ import "reflect-metadata";
 import { LoadPostUseCase } from "../../port/in/loadPostUseCase";
 
 import { inject, injectable } from "inversify";
-import { TYPES } from "@/pages/common/types/dependecies-types";
+import { TYPES } from "@/src/common/types/dependecies-types";
 import type { LoadPostPort } from "../../port/out/loadPostPort";
 
 @injectable()
