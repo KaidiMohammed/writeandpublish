@@ -2,12 +2,12 @@
 
 import { NextApiRequest, NextApiResponse } from "next";
 
-import { SavePostAsDraftUseCase } from "@/pages/application/port/in/savePostAsDraftUseCase";
+import { SavePostAsDraftUseCase } from "@/src/application/port/in/savePostAsDraftUseCase";
 import { myContainer } from "@/inversify.config";
-import { POST } from "@/pages/common/Http/verb";
-import { TYPES } from "@/pages/common/types/dependecies-types";
-import { METHOD_NOT_ALLOWED } from "@/pages/common/errorManagement/errorCode";
-import { PostValidator } from "@/pages/application/port/in/postValidator";
+import { POST } from "@/src/common/Http/verb";
+import { TYPES } from "@/src/common/types/dependecies-types";
+import { METHOD_NOT_ALLOWED } from "@/src/common/errorManagement/errorCode";
+import { PostValidator } from "@/src/application/port/in/postValidator";
 
 export default function handler({ body: { post }, ...req }: NextApiRequest, res: NextApiResponse) {
   if (req.method !== POST) {

@@ -4,7 +4,7 @@ import { SavePostAsDraftUseCase } from "../../port/in/savePostAsDraftUseCase";
 import Post from "../model/post";
 import { inject, injectable } from "inversify";
 import type { PersistPostPort } from "../../port/out/persistPostPort";
-import { TYPES } from "@/pages/common/types/dependecies-types";
+import { TYPES } from "@/src/common/types/dependecies-types";
 
 @injectable()
 class SavePostAsDraftService implements SavePostAsDraftUseCase {

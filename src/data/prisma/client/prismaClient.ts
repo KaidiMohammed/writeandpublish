@@ -1,5 +1,5 @@
 import { PrismaClient as PrismaClientLib } from '@prisma/client';
-import Post from "@/pages/application/domain/model/post";
+import Post from "@/src/application/domain/model/post";
 import { injectable } from 'inversify';
 
 @injectable()

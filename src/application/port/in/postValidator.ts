@@ -1,6 +1,6 @@
 import Post from "../../domain/model/post";
-import BadRequestException from "@/pages/common/errorManagement/exceptions/badRequestException";
-import { BAD_REQUEST } from "@/pages/common/errorManagement/errorCode";
+import BadRequestException from "./../../../common/errorManagement/exceptions/badRequestException";
+import { BAD_REQUEST } from "./../../../common/errorManagement/errorCode";
 
 export class PostValidator {
 

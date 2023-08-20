@@ -3,10 +3,10 @@
 import { NextApiRequest, NextApiResponse } from "next";
 
 import { myContainer } from "@/inversify.config";
-import { GET } from "@/pages/common/Http/verb";
-import { TYPES } from "@/pages/common/types/dependecies-types";
-import { METHOD_NOT_ALLOWED } from "@/pages/common/errorManagement/errorCode";
-import { LoadPostUseCase } from "@/pages/application/port/in/loadPostUseCase";
+import { GET } from "@/src/common/Http/verb";
+import { TYPES } from "@/src/common/types/dependecies-types";
+import { METHOD_NOT_ALLOWED } from "@/src/common/errorManagement/errorCode";
+import { LoadPostUseCase } from "@/src/application/port/in/loadPostUseCase";
 
 export default async function handler({ body: { post }, ...req }: NextApiRequest, res: NextApiResponse) {
     if (req.method !== GET) {

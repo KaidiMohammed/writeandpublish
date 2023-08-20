@@ -1,11 +1,11 @@
 import { inject, injectable } from "inversify";
 
-import Post from "@/pages/application/domain/model/post";
-import { PersistPostPort } from "@/pages/application/port/out/persistPostPort";
-import { TYPES } from "@/pages/common/types/dependecies-types";
-import type { PersistPostInDatabase } from "@/pages/data/interfaces/persistPostInDatabase";
-import { LoadPostPort } from "@/pages/application/port/out/loadPostPort";
-import type { LoadPostFromDatabase } from "@/pages/data/interfaces/loadPostFromDatabase";
+import Post from "@/src/application/domain/model/post";
+import { PersistPostPort } from "@/src/application/port/out/persistPostPort";
+import { TYPES } from "@/src/common/types/dependecies-types";
+import type { PersistPostInDatabase } from "@/src/data/interfaces/persistPostInDatabase";
+import { LoadPostPort } from "@/src/application/port/out/loadPostPort";
+import type { LoadPostFromDatabase } from "@/src/data/interfaces/loadPostFromDatabase";
 
 @injectable()
 class PostPersistenceAdapter implements PersistPostPort, LoadPostPort {
