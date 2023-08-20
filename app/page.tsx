@@ -9,7 +9,7 @@ export default async function Page() {
       <main className="flex flex-col items-center justify-between p-24">
         <Quill />
       </main>
-      <div className="flex flex-row items-end justify-center gap-10">
+      <div className="flex flex-row justify-center gap-10 flex-wrap mr-5">
         {posts?.map((post: any) => (
           <Post key={post.id} {...post} />
         ))}
