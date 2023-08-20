@@ -10,6 +10,7 @@ import { LoadPostFromDatabase } from "./src/data/interfaces/loadPostFromDatabase
 import { LoadPostsFromDatabase } from "./src/data/prisma/services/loadPostFromDatabase";
 import { LoadPostPort } from "./src/application/port/out/loadPostPort";
 
+
 const myContainer = new Container();
 myContainer.bind<SavePostAsDraftUseCase>(TYPES.SavePostAsDraftUseCase).to(SavePostAsDraftService);
 myContainer.bind<PersistPostPort>(TYPES.SavePostPort).to(PostPersistenceAdapter);

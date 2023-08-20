@@ -3,5 +3,6 @@ export const TYPES = {
     SavePostPort: Symbol.for('SavePostPort'),
     LoadPostPort: Symbol.for('LoadPostPort'),
     PersistPostInDatabase: Symbol.for('PersistPostInDatabase'),
-    LoadPostFromDatabase: Symbol.for('LoadPostFromDatabase')
+    LoadPostFromDatabase: Symbol.for('LoadPostFromDatabase'),
+    PrismaClientContract: Symbol.for('PrismaClientContract')
 };
