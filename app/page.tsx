@@ -17,9 +17,10 @@ export default async function Page() {
   );
 }
 
-export async function getPosts() {
+async function getPosts() {
+  'use server';
   const res = await fetch(process.env.HOST_URL + '/api/post/get', {
-    next: { revalidate: 2 },
+    cache: 'no-cache',
   });
   if (!res.ok) {
     throw new Error('Failed to fetch data');
