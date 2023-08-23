@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "postinstall": "prisma generate --schema=./src/data/prisma/schema.prisma"
+    "postinstall": "prisma generate --schema=./src/_core/data/prisma/schema.prisma"
   },
   "dependencies": {
     "@prisma/client": "^5.1.1",

@@ -1,3 +1,5 @@
+Code clean or nothing.
+
 This is an application which let you share posts, the goal is as simple as that, the backend of the application is built following the clean architecture principles
 
 ## Getting Started
