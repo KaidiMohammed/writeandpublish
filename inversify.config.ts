@@ -1,14 +1,16 @@
 import { Container } from "inversify";
-import { TYPES } from "./src/common/types/dependecies-types";
-import { SavePostAsDraftUseCase } from "./src/application/port/in/savePostAsDraftUseCase";
-import { SavePostAsDraftService } from "./src/application/domain/service/savePostAsDraftService";
-import { PersistPostPort } from "./src/application/port/out/persistPostPort";
-import { PostPersistenceAdapter } from "./src/adapter/out/persistence/PostPersistenceAdapter";
-import { PersistPostInDatabase } from "./src/data/interfaces/persistPostInDatabase";
-import { PersistPostinDatabase } from "./src/data/prisma/services/persistPostInDatabase";
-import { LoadPostFromDatabase } from "./src/data/interfaces/loadPostFromDatabase";
-import { LoadPostsFromDatabase } from "./src/data/prisma/services/loadPostFromDatabase";
-import { LoadPostPort } from "./src/application/port/out/loadPostPort";
+
+import { TYPES } from "@core/common/types/dependecies-types";
+
+import { SavePostAsDraftUseCase } from "@core/application/port/in/savePostAsDraftUseCase";
+import { SavePostAsDraftService } from "@core/application/domain/service/savePostAsDraftService";
+import { PersistPostPort } from "@core/application/port/out/persistPostPort";
+import { PostPersistenceAdapter } from "@core/adapter/out/persistence/PostPersistenceAdapter";
+import { PersistPostInDatabase } from "@core/data/interfaces/persistPostInDatabase";
+import { PersistPostinDatabase } from "@core/data/prisma/services/persistPostInDatabase";
+import { LoadPostFromDatabase } from "@core/data/interfaces/loadPostFromDatabase";
+import { LoadPostsFromDatabase } from "@core/data/prisma/services/loadPostFromDatabase";
+import { LoadPostPort } from "@core/application/port/out/loadPostPort";
 
 
 const myContainer = new Container();
