@@ -15,8 +15,6 @@
     "@types/react": "18.2.20",
     "@types/react-dom": "18.2.7",
     "autoprefixer": "10.4.15",
-    "eslint": "8.47.0",
-    "eslint-config-next": "13.4.16",
     "inversify": "^6.0.1",
     "next": "13.4.16",
     "postcss": "8.4.28",
@@ -29,6 +27,8 @@
     "typescript": "5.1.6"
   },
   "devDependencies": {
+    "eslint": "8.47.0",
+    "eslint-config-next": "13.4.16",
     "@babel/core": "^7.22.10",
     "@babel/plugin-proposal-decorators": "^7.22.10",
     "@types/jest": "^29.5.3",

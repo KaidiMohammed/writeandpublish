@@ -1,11 +1,11 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
-import { Header } from './_components/layout/header/header';
-import { Footer } from './_components/layout/footer/footer';
+import { Inter, Arapey } from 'next/font/google';
+import { Header } from './_components/Layout/Header';
+import { Footer } from './_components/Layout/Footer';
 import Link from 'next/link';
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({ subsets: ['latin'], weight: '500' });
 
 export const metadata: Metadata = {
   title: 'Write and publish',
@@ -18,8 +18,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html>
-      <body>
+    <html className="container">
+      <body className={inter.className}>
         <Header />
         <nav className="flex justify-around text-xl mt-7">
           <Link className="bg-green-400 rounded-lg" href="/post/read">

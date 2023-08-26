@@ -1,4 +1,4 @@
-import { Post } from '@/src/app/_components/post/post';
+import { Post } from '@/src/app/_components/Post';
 import { headers } from 'next/headers';
 
 export default async function Page() {
@@ -9,7 +9,7 @@ export default async function Page() {
 
   return (
     <>
-      <div className="flex  justify-center gap-10 flex-wrap mr-5  mt-5">
+      <div className="flex  justify-center items-center mx-auto gap-10 flex-wrap mt-5">
         {postsElement}
       </div>
     </>
