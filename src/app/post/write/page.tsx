@@ -1,4 +1,4 @@
-import { Quill } from '../../_components/textEditors/quill';
+import Quill from '@/src/app/_components/TextEditor/Quill';
 
 export default async function Page() {
   return (

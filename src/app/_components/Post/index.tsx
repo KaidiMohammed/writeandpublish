@@ -1,6 +1,6 @@
 const Post = ({ title, content, author }: any) => {
   return (
-    <div className="max-w-sm p-11 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+    <div className="w-2/3 ml-4 flex flex-col justify-center max-w-2xl p-11 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
       <a href="#">
         <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
           {title}
