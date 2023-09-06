@@ -18,7 +18,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html className="container">
+    <html>
       <body className={inter.className}>
         <Header />
         <nav className="flex justify-around text-xl mt-7">
