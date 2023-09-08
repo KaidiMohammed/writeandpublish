@@ -1,4 +1,5 @@
 'use client';
+import Link from 'next/link';
 import { useState, useEffect } from 'react';
 
 const Header = () => {
@@ -37,11 +38,11 @@ const Header = () => {
     >
       <nav className="px-4 lg:px-6 py-2.5  text-black tracking-tight">
         <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
-          <a className="flex items-center">
-            <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-black">
+          <Link className="flex items-center" href="/">
+            <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-black cursor-pointer">
               Write & publish
             </span>
-          </a>
+          </Link>
           <div className="flex items-end justify-end lg:order-2">
             <a
               href="#"

@@ -1,9 +1,10 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import { Inter, Arapey } from 'next/font/google';
+import Link from 'next/link';
+import { Inter } from 'next/font/google';
+
 import { Header } from './_components/Layout/Header';
 import { Footer } from './_components/Layout/Footer';
-import Link from 'next/link';
 
 const inter = Inter({ subsets: ['latin'], weight: '500' });
 
@@ -22,15 +23,21 @@ export default function RootLayout({
       <body className={inter.className}>
         <Header />
         <nav className="flex justify-around text-xl mt-7">
-          <Link className="bg-green-400 rounded-lg" href="/post/read">
+          <Link
+            className="bg-yellow-500 px-2.5 rounded-md text-white"
+            href="/post/read"
+          >
             Read posts
           </Link>
-          <Link className="bg-blue-400 rounded-lg" href="/post/write">
+          <Link
+            className="bg-yellow-500 px-2.5 rounded-md text-white"
+            href="/post/write"
+          >
             Write a post
           </Link>
         </nav>
         <main>{children}</main>
-        <Footer />
+        {/* <Footer /> */}
       </body>
     </html>
   );
