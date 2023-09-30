@@ -14,9 +14,6 @@ export default function WelcomeAuth({ onClose }: any) {
   );
   const [authError, setAuthError] = useState('');
 
-  const closeModal = () => {
-    setShowModal(false);
-  };
   const handleSignIn = async (event: Event) => {
     event.preventDefault();
     const user = await signIn('credentials', {
