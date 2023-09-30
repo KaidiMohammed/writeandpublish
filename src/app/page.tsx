@@ -1,9 +1,11 @@
 import Post from '@/src/app/post/read/page';
 
-export default async function Page() {
+const HomePage: React.FC = () => {
   return (
     <>
       <Post />
     </>
   );
-}
+};
+
+export default HomePage;
