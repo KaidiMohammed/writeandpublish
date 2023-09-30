@@ -14,10 +14,6 @@ export default function WelcomeAuth({ onClose }: any) {
   );
   const [authError, setAuthError] = useState('');
 
-  const handleClick = (event: Event) => {
-    event?.preventDefault();
-    setShowModal(!showModal);
-  };
   const closeModal = () => {
     setShowModal(false);
   };
