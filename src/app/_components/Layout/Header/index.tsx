@@ -1,6 +1,11 @@
 'use client';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
+import { useSession, signOut } from 'next-auth/react';
+import Portal from './../../Portal';
+import WelcomeAuth from './../../Auth';
+import React from 'react';
+import Button from '../../Button';
 
 const Header = () => {
   function useScrollDirection() {
@@ -30,6 +35,15 @@ const Header = () => {
   }
   const scrollDirection = useScrollDirection();
 
+  const { data: session } = useSession();
+  const [displayAuth, setDisplayAuth] = React.useState(false);
+  const handleSignInClick = () => {
+    setDisplayAuth(true);
+  };
+  const handCloseAuthModal = () => {
+    setDisplayAuth(false);
+  };
+
   return (
     <header
       className={`sticky ${
@@ -39,16 +53,35 @@ const Header = () => {
       <nav className="px-4 lg:px-6 py-2.5  text-black tracking-tight">
         <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
           <Link className="flex items-center" href="/">
-            <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-black cursor-pointer">
+            <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-black cursor-pointer ">
               Write & publish
             </span>
           </Link>
-          <div className="flex items-end justify-end lg:order-2">
+          <div className="flex items-end ">
+            {session?.user && (
+              <>
+                <label className="text-blue-500  text-sm px-5 mb-1 ml-3 focus:outline-none">
+                  {session?.user?.name}
+                </label>
+              </>
+            )}
             <a
               href="#"
-              className="text-black  hover:bg-blue-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5  focus:outline-none "
+              className="text-black  hover:bg-blue-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-md text-sm px-4  focus:outline-none "
             >
-              Log in
+              {session?.user && (
+                <>
+                  <Button onClick={() => signOut()}>Log out</Button>
+                </>
+              )}
+              {!session?.user && (
+                <Button onClick={() => handleSignInClick()}>Log in</Button>
+              )}
+              {displayAuth && (
+                <Portal onClose={handCloseAuthModal}>
+                  <WelcomeAuth onClose={handCloseAuthModal} />
+                </Portal>
+              )}
             </a>
           </div>
         </div>
