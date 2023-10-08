@@ -1,6 +1,15 @@
 .text-editor {
   margin: 0 auto;
+  width: 100%;
 }
 .ql-editor {
   min-height: 100px;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
