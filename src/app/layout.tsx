@@ -8,6 +8,7 @@ import { Header } from './_components/Layout/Header';
 import { Footer } from './_components/Layout/Footer';
 import { getServerSession } from 'next-auth/next';
 import { authOptions } from '@/src/app/api/auth/[...nextauth]/route';
+import { useSession, signOut } from 'next-auth/react';
 
 const inter = Inter({ subsets: ['latin'], weight: '500' });
 
@@ -22,29 +23,32 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   const session = await getServerSession(authOptions);
+
   return (
     <html>
       <Provider session={session}>
-        <body className={inter.className}>
+        <body className="flex flex-col justify-between w-full h-full items-stretch overflow-auto flex-1 gap-8">
           <Header />
-          <nav className="flex justify-around text-xl mt-7">
-            <Link
-              className="bg-yellow-500 px-2.5 rounded-md text-white"
-              href="/post/read"
-            >
-              Read posts
-            </Link>
-            <Link
-              className="bg-yellow-500 px-2.5 rounded-md text-white"
-              href="/post/write"
-            >
-              Write a post
-            </Link>
-          </nav>
-          <div className="modal-container"></div>
-
-          <main>{children}</main>
-          {/* <Footer /> */}
+          <div>
+            <nav className="flex justify-around text-xl flex-wrap">
+              <Link
+                className="bg-yellow-500 px-2.5 rounded-md text-white"
+                href="/post/read"
+              >
+                Read posts
+              </Link>
+              {session?.user && (
+                <Link
+                  className="bg-yellow-500 px-2.5 rounded-md text-white"
+                  href="/post/write"
+                >
+                  Write a post
+                </Link>
+              )}
+            </nav>
+            <div className="modal-container"></div>
+          </div>
+          <main className="max-h-max">{children}</main>
         </body>
       </Provider>
     </html>
