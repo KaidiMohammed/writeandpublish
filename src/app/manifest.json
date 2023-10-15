@@ -1,0 +1,8 @@
+{
+  "name": "Write and publish",
+  "short_name": "HackerWeb",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fff",
+  "description": "A write and publish application."
+}
