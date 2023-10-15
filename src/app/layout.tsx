@@ -26,6 +26,11 @@ export default async function RootLayout({
 
   return (
     <html>
+      <head>
+        <meta name="apple-mobile-web-app-status-bar" content="#90cdf4" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <link rel="manifest" href="manifest.json" />
+      </head>
       <Provider session={session}>
         <body className="flex flex-col justify-between w-full h-full items-stretch overflow-auto flex-1 gap-8">
           <Header />
