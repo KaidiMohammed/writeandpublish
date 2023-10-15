@@ -27,12 +27,25 @@ export default async function RootLayout({
   return (
     <html>
       <head>
-        <meta
-          name="apple-mobile-web-app-status-bar-style"
-          content="black-translucent"
-        />
-        <meta name="mobile-web-app-capable" content="yes" />
+        <title>Mobile-ready web app</title>
+
         <meta name="apple-mobile-web-app-capable" content="yes" />
+
+        <meta name="mobile-web-app-capable" content="yes" />
+
+        <meta
+          name="apple-mobile-web-app-title"
+          content="Mobile web app title"
+        />
+
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+        <meta
+          name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimal-ui"
+        />
+
+        <meta name="format-detection" content="telephone=no" />
       </head>
       <Provider session={session}>
         <body className="flex flex-col justify-between w-full h-full items-stretch overflow-auto flex-1 gap-8">
