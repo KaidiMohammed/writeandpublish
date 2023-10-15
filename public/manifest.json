@@ -2,7 +2,7 @@
   "name": "Write and publish",
   "short_name": "This name will show in your Windows taskbar, in the start menu, and Android homescreen",
   "start_url": "The URL that should be loaded when your application is opened",
-  "display": "standalone",
+  "display": "browser",
   "description": "A description for your application",
   "lang": " The default language of your application",
   "dir": "auto",
