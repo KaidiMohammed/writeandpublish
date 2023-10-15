@@ -6,6 +6,7 @@
   "description": "A description for your application",
   "lang": " The default language of your application",
   "dir": "auto",
+  "scope": "/post/read",
   "theme_color": "#000000",
   "background_color": "#000000",
   "orientation": "any",

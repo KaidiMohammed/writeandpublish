@@ -28,7 +28,9 @@ export default async function RootLayout({
     <html>
       <head>
         <title>Mobile-ready web app</title>
-        {/* 
+
+        <link rel="manifest" href="/manifest.json" />
+
         <meta name="apple-mobile-web-app-capable" content="yes" />
 
         <meta name="mobile-web-app-capable" content="yes" />
@@ -45,7 +47,7 @@ export default async function RootLayout({
           content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimal-ui"
         />
 
-        <meta name="format-detection" content="telephone=no" /> */}
+        <meta name="format-detection" content="telephone=no" />
       </head>
       <Provider session={session}>
         <body className="flex flex-col justify-between w-full h-full items-stretch overflow-auto flex-1 gap-8">
