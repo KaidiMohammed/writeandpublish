@@ -29,18 +29,18 @@ export default async function RootLayout({
       <head>
         <title>Mobile-ready web app</title>
 
-        <link rel="manifest" href="/manifest.json" />
+        {/* <link rel="manifest" href="/manifest.json" /> */}
 
-        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-capable" content="no" />
 
-        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="mobile-web-app-capable" content="no" />
 
         <meta
           name="apple-mobile-web-app-title"
           content="Mobile web app title"
         />
 
-        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="red" />
 
         <meta
           name="viewport"
