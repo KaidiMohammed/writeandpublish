@@ -7,7 +7,7 @@ import Provider from '@/src/app/context/ClientProvider';
 import { Header } from './_components/Layout/Header';
 import { Footer } from './_components/Layout/Footer';
 import { getServerSession } from 'next-auth/next';
-import { authOptions } from '@/src/app/api/auth/[...nextauth]/route';
+import { authOptions } from '@/src/config/auth/nextAuth';
 import { useSession, signOut } from 'next-auth/react';
 
 const inter = Inter({ subsets: ['latin'], weight: '500' });
@@ -27,26 +27,19 @@ export default async function RootLayout({
   return (
     <html>
       <head>
-        <title>Mobile-ready web app</title>
-
-        {/* <link rel="manifest" href="/manifest.json" /> */}
-
+        <title>Write and publish </title>
         <meta name="apple-mobile-web-app-capable" content="no" />
-
         <meta name="mobile-web-app-capable" content="no" />
 
         <meta
           name="apple-mobile-web-app-title"
           content="Mobile web app title"
         />
-
         <meta name="apple-mobile-web-app-status-bar-style" content="red" />
-
         <meta
           name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimal-ui"
         />
-
         <meta name="format-detection" content="telephone=no" />
       </head>
       <Provider session={session}>
