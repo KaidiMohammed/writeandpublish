@@ -9,29 +9,16 @@ import { TbSend } from 'react-icons/tb';
 import Button from '../../_components/Button';
 import Toast from '../../_components/Toast';
 import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
+import { initialState, reducer } from './state/reducer';
+import { publishPostInOutSource } from './functions/publishPostInOutSource';
 
 const Editor = dynamic(() => import('../../_components/TextEditor/Quill'), {
   ssr: false,
   loading: () => (
-    <p>The editor is loading ... it wont take long, promise ;) </p>
+    <p> The editor is loading ... it wont take long, promise ;) </p>
   ),
 });
-
-const initialState = { title: '', content: '' };
-const reducer = (state: any, action: { type: string; payload: any }) => {
-  if (action.type === 'setTitle') {
-    return {
-      ...state,
-      title: action.payload,
-    };
-  }
-  if (action.type === 'setContent') {
-    return {
-      ...state,
-      content: action.payload,
-    };
-  }
-};
 
 export default function Page() {
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -41,6 +28,7 @@ export default function Page() {
     error: false,
   });
   const { data: session } = useSession();
+  const router = useRouter();
 
   const setPostContent = (content: string) => {
     dispatch({ type: 'setContent', payload: content });
@@ -49,37 +37,25 @@ export default function Page() {
     dispatch({ type: 'setTitle', payload: title.target.value });
   };
 
-  async function publishPost() {
+  async function publishPost(e: any) {
+    e.preventDefault();
     if (state.title.trim().length === 0) {
       titleContentRef?.current?.focus();
     } else {
-      const host = window.location.host;
-      const protocal =
-        process?.env.NODE_ENV === 'development' ? 'http' : 'https';
-      let res = await fetch(`${protocal}://${host}/api/post`, {
-        cache: 'force-cache',
-        method: 'POST',
-        body: JSON.stringify({
-          post: {
-            title: state.title,
-            content: state.content,
-            author: session?.user?.name,
-          },
-        }),
-      });
-      const resWritePost = await res.json();
+      const resWritePost = await publishPostInOutSource(state, session);
       setPublishState({
         ...publishState,
         success: resWritePost.success,
         error: !resWritePost.success,
       });
     }
+    router.push('/post/read');
   }
 
   return (
     <>
       <div className="flex flex-col m-5 ">
-        <form>
+        <form onSubmit={async (e) => await publishPost(e)}>
           <div className="mb-6">
             <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
               Title
@@ -97,25 +73,35 @@ export default function Page() {
           <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
             Content
           </label>
-          <Editor getContent={(content: any) => setPostContent(content)} />
+          <Editor
+            getContent={(content: any) => {
+              setPostContent(content);
+            }}
+          />
           {publishState.success && <Toast success />}
           {publishState.error && <Toast error />}
+
+          <div className="flex justify-center mt-5 gap-2 flex-wrap">
+            <Button
+              primary
+              rounded
+              className="flex justify-center"
+              type="submit"
+            >
+              <span> Publish </span>
+              <TbSend />
+            </Button>
+            <Button
+              disabled
+              secondary
+              rounded
+              className="justify-center hidden"
+            >
+              Save as draft
+              <BsFillPencilFill />
+            </Button>
+          </div>
         </form>
-        <div className="flex justify-between mt-5 flex-wrap">
-          <Button
-            primary
-            rounded
-            className="flex justify-center"
-            onClick={async () => await publishPost()}
-          >
-            <span> Publish </span>
-            <TbSend />
-          </Button>
-          <Button disabled secondary rounded className="flex justify-center">
-            Save as draft
-            <BsFillPencilFill />
-          </Button>
-        </div>
       </div>
     </>
   );

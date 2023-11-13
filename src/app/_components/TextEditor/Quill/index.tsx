@@ -8,19 +8,12 @@ import 'react-quill/dist/quill.snow.css';
 import './styles.css';
 
 export const Editor = ({ getContent }: any) => {
-  const [state, setState] = React.useState({ value: '' });
-  const handleChange = (value: any) => {
-    setState({ value });
-    getContent(value);
-  };
-
   return (
     <div className="text-editor ">
       <EditorToolbar />
       <ReactQuill
         theme="snow"
-        value={state.value}
-        onChange={handleChange}
+        onChange={getContent}
         placeholder={'Write something awesome...'}
         modules={modules}
         formats={formats}
