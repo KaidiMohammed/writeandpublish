@@ -18,6 +18,8 @@ class PrismaPostLib implements PrismaDataAccess<Post> {
                 title: post.getTitle(),
                 content: post.getContent(),
                 author: post.getAuthor(),
+                //@ts-ignore
+                additionalInfo: post.getAdditionalInfo()
             },
         })
     }

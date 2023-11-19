@@ -4,8 +4,8 @@ import Link from 'next/link';
 import { Inter } from 'next/font/google';
 import Provider from '@/src/app/context/ClientProvider';
 
-import { Header } from './_components/Layout/Header';
-import { Footer } from './_components/Layout/Footer';
+import { Header } from './_components/Layout/Header/Header';
+import { Footer } from './_components/Layout/Footer/Footer';
 import { getServerSession } from 'next-auth/next';
 import { authOptions } from '@/src/config/auth/nextAuth';
 import { useSession, signOut } from 'next-auth/react';

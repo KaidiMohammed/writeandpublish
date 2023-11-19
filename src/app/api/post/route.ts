@@ -5,6 +5,7 @@ import { LoadPostUseCase } from "@/src/_core/application/port/in/loadPostUseCase
 import { NextRequest, NextResponse } from "next/server";
 import { PostValidator } from "@/src/_core/application/port/in/postValidator";
 import { SavePostAsDraftUseCase } from "@/src/_core/application/port/in/savePostAsDraftUseCase";
+import { NextApiRequest, NextApiResponse } from "next";
 
 export async function GET() {
     try {

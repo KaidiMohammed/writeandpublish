@@ -1,25 +1,3 @@
-'use client';
+import { Quill } from './Quill';
 
-import React from 'react';
-import ReactQuill from 'react-quill';
-import EditorToolbar, { modules, formats } from './EditorToolbar';
-
-import 'react-quill/dist/quill.snow.css';
-import './styles.css';
-
-export const Editor = ({ getContent }: any) => {
-  return (
-    <div className="text-editor ">
-      <EditorToolbar />
-      <ReactQuill
-        theme="snow"
-        onChange={getContent}
-        placeholder={'Write something awesome...'}
-        modules={modules}
-        formats={formats}
-      />
-    </div>
-  );
-};
-
-export default Editor;
+export { Quill };

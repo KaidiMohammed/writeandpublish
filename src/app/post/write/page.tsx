@@ -6,19 +6,22 @@ import { useReducer, useRef, useState } from 'react';
 import { BsFillPencilFill } from 'react-icons/bs';
 import { TbSend } from 'react-icons/tb';
 
-import Button from '../../_components/Button';
+import Button from '../../_components/Button/Button';
 import Toast from '../../_components/Toast';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { initialState, reducer } from './state/reducer';
 import { publishPostInOutSource } from './functions/publishPostInOutSource';
 
-const Editor = dynamic(() => import('../../_components/TextEditor/Quill'), {
-  ssr: false,
-  loading: () => (
-    <p> The editor is loading ... it wont take long, promise ;) </p>
-  ),
-});
+const Editor = dynamic(
+  () => import('../../_components/TextEditor/Quill/Quill'),
+  {
+    ssr: false,
+    loading: () => (
+      <p> The editor is loading ... it wont take long, promise ;) </p>
+    ),
+  },
+);
 
 export default function Page() {
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -38,11 +41,19 @@ export default function Page() {
   };
 
   async function publishPost(e: any) {
-    e.preventDefault();
     if (state.title.trim().length === 0) {
       titleContentRef?.current?.focus();
     } else {
-      const resWritePost = await publishPostInOutSource(state, session);
+      const additionalInfo = {
+        publishDate: new Date(),
+        updateDate: null,
+        authorProfilePicture: session?.user?.image,
+      };
+      const resWritePost = await publishPostInOutSource(
+        state,
+        session,
+        additionalInfo,
+      );
       setPublishState({
         ...publishState,
         success: resWritePost.success,
@@ -55,7 +66,12 @@ export default function Page() {
   return (
     <>
       <div className="flex flex-col m-5 ">
-        <form onSubmit={async (e) => await publishPost(e)}>
+        <form
+          onSubmit={async (e) => {
+            e.preventDefault();
+            await publishPost(e);
+          }}
+        >
           <div className="mb-6">
             <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
               Title

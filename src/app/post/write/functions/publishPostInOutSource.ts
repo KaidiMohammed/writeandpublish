@@ -1,4 +1,4 @@
-export const publishPostInOutSource = async (state: any, session: any) => {
+export const publishPostInOutSource = async (state: any, session: any, additionalInfo: any) => {
     const host = window.location.host;
     const protocal = process?.env.NODE_ENV === 'development' ? 'http' : 'https';
     let res = await fetch(`${protocal}://${host}/api/post`, {
@@ -9,6 +9,7 @@ export const publishPostInOutSource = async (state: any, session: any) => {
                 title: state.title,
                 content: state.content,
                 author: session?.user?.name,
+                additionalInfo
             },
         }),
     });
