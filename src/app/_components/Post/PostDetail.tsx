@@ -2,10 +2,16 @@ import Image from 'next/image';
 const parse = require('html-react-parser');
 import { dateInYyyyMmDdHhMmSs } from '../../utils/date/formate';
 
-const PostDetail = ({ id, title, author, content, additionalInfo }: any) => {
+export const PostDetail = ({
+  id,
+  title,
+  author,
+  content,
+  additionalInfo,
+}: any) => {
   return (
-    <div className="flex flex-row">
-      <h1> {title} </h1>
+    <div className="flex flex-col items-center gap-5">
+      <h5 className="self-center text-4xl font-extralight"> {title} </h5>
       <p className="flex flex-col justify-center gap-2 mb-3 font-normal text-gray-700 dark:text-gray-400">
         {additionalInfo?.additionalInfo?.authorProfilePicture && (
           <span className="flex flex-row gap-2">
@@ -21,7 +27,7 @@ const PostDetail = ({ id, title, author, content, additionalInfo }: any) => {
         )}
         <span className="italic ">
           <i>
-            Published at :
+            Published on
             {dateInYyyyMmDdHhMmSs(additionalInfo?.additionalInfo?.publishDate)}
           </i>
         </span>
@@ -31,8 +37,8 @@ const PostDetail = ({ id, title, author, content, additionalInfo }: any) => {
           </span>
         )}
       </p>
-      <div className="w-full overflow-clip mb-3 font-normal text-gray-700 dark:text-gray-400">
-        {parse(content.substr(0, 200))} ... see more
+      <div className="self-center mx-auto  overflow-x-hidden mb-3 font-normal text-gray-700 dark:text-gray-400">
+        {parse(content)}
       </div>
     </div>
   );

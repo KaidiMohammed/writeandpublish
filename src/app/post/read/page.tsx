@@ -9,7 +9,7 @@ export default async function Page() {
 
   return (
     <>
-      <div className="flex  justify-center items-center mx-auto gap-10 flex-wrap mt-5">
+      <div className="flex cursor-pointer justify-center items-center mx-auto gap-10 flex-wrap mt-5">
         {postsElement}
       </div>
     </>

@@ -28,6 +28,11 @@ class PrismaPostLib implements PrismaDataAccess<Post> {
         const postInResult = await this.prismaClient.post.findMany();
         return postInResult;
     }
+
+    public async findById(postId: number) {
+        const postInResult = await this.prismaClient.post.findUnique({ where: { id: postId } });
+        return postInResult;
+    }
 }
 
 export { PrismaPostLib }

@@ -25,6 +25,11 @@ class PostPersistenceAdapter implements PersistPostPort, LoadPostPort {
         return posts;
     }
 
+    async loadPostById(id: number): Promise<any> {
+        const posts = await this.loadPostFromDatabase.loadById(id)
+        return posts;
+    }
+
 }
 
 export { PostPersistenceAdapter }
