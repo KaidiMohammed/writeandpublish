@@ -18,7 +18,7 @@ export default function PostHeader({
 }: PostHeaderInfo) {
   return (
     <div className="flex flex-col items-center gap-5">
-      <h5 className="self-center text-4xl  font-bold"> {title} </h5>
+      <h5 className="m-5 self-center text-4xl  font-bold"> {title} </h5>
       <p className="flex flex-col justify-center gap-2 mb-3 font-normal text-gray-700 dark:text-gray-400">
         {authorProfilePicture && (
           <span className="flex flex-row gap-2">
