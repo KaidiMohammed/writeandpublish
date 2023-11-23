@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect'; // the library exposes toBeInTheDocument ....
-import { useRouter } from 'next/router';
 
 import { Post } from '..';
 

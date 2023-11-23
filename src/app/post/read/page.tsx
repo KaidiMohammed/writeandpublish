@@ -1,4 +1,4 @@
-import { Post } from '@/src/app/_components/Post';
+import { Post } from '@components/Post';
 import { headers } from 'next/headers';
 
 export default async function Page() {

@@ -6,24 +6,23 @@ import { useReducer, useRef, useState } from 'react';
 import { BsFillPencilFill } from 'react-icons/bs';
 import { TbSend } from 'react-icons/tb';
 
-import Button from '../../_components/Button/Button';
-import Toast from '../../_components/Toast';
+import { withAuth } from '@components/Hoc/WithAuth';
+
+import Button from '@components/Button';
+import Toast from '@components/Toast';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { initialState, reducer } from './state/reducer';
 import { publishPostInOutSource } from './functions/publishPostInOutSource';
 
-const Editor = dynamic(
-  () => import('../../_components/TextEditor/Quill/Quill'),
-  {
-    ssr: false,
-    loading: () => (
-      <p> The editor is loading ... it wont take long, promise ;) </p>
-    ),
-  },
-);
+const Editor = dynamic(() => import('@components/TextEditor/Quill/Quill'), {
+  ssr: false,
+  loading: () => (
+    <p> The editor is loading ... it wont take long, promise ;) </p>
+  ),
+});
 
-export default function Page() {
+const Page = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const titleContentRef = useRef<HTMLInputElement | null>(null);
   const [publishState, setPublishState] = useState({
@@ -36,11 +35,11 @@ export default function Page() {
   const setPostContent = (content: string) => {
     dispatch({ type: 'setContent', payload: content });
   };
-  const setPostTitle = (title: any) => {
-    dispatch({ type: 'setTitle', payload: title.target.value });
+  const setPostTitle = (titleEvent: any) => {
+    dispatch({ type: 'setTitle', payload: titleEvent.target.value });
   };
 
-  async function publishPost(e: any) {
+  async function publishPost() {
     if (state.title.trim().length === 0) {
       titleContentRef?.current?.focus();
     } else {
@@ -59,17 +58,17 @@ export default function Page() {
         success: resWritePost.success,
         error: !resWritePost.success,
       });
+      if (resWritePost.success) router.push('/post/read');
     }
-    router.push('/post/read');
   }
 
   return (
     <>
-      <div className="flex flex-col m-5 ">
+      <div className="flex flex-col m-5">
         <form
           onSubmit={async (e) => {
             e.preventDefault();
-            await publishPost(e);
+            await publishPost();
           }}
         >
           <div className="mb-6">
@@ -121,4 +120,6 @@ export default function Page() {
       </div>
     </>
   );
-}
+};
+
+export default withAuth(Page);
