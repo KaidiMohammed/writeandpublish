@@ -12,4 +12,5 @@ model Post {
     title   String
     content String
     author  String
+    additionalInfo Json
 }

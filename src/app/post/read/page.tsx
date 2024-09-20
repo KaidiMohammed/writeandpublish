@@ -1,4 +1,4 @@
-import { Post } from '@/src/app/_components/Post';
+import { Post } from '@components/Post';
 import { headers } from 'next/headers';
 
 export default async function Page() {
@@ -9,7 +9,7 @@ export default async function Page() {
 
   return (
     <>
-      <div className="flex  justify-center items-center mx-auto gap-10 flex-wrap mt-5">
+      <div className="flex cursor-pointer justify-center items-center mx-auto gap-10 flex-wrap mt-5">
         {postsElement}
       </div>
     </>
@@ -21,7 +21,7 @@ async function getPosts() {
   const host = headers().get('host');
   const protocal = process?.env.NODE_ENV === 'development' ? 'http' : 'https';
   let res = await fetch(`${protocal}://${host}/api/post`, {
-    cache: 'force-cache',
+    cache: 'no-cache',
   });
   return await res.json();
 }

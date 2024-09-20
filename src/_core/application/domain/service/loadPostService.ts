@@ -15,6 +15,11 @@ class LoadPostsService implements LoadPostUseCase {
         const posts = this.loadPostPort.loadPost();
         return Promise.resolve(posts);
     }
+
+    loadPostById(id: number): Promise<any> {
+        const posts = this.loadPostPort.loadPostById(id);
+        return Promise.resolve(posts);
+    }
 }
 
 export { LoadPostsService }

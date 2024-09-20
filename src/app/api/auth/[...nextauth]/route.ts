@@ -1,38 +1,6 @@
-import NextAuth, { AuthOptions } from "next-auth";
-import GoogleProvider from "next-auth/providers/google";
-
-export const authOptions: AuthOptions = {
-    pages: {
-        signIn: "/login",
-    },
-    session: {
-        strategy: "jwt",
-    },
-    providers: [
-        GoogleProvider({
-            clientId: process.env.GOOGLE_CLIENT_ID ?? "",
-            clientSecret: process.env.GOOGLE_CLIENT_SECRET ?? "",
-        }),
-    ],
-
-    callbacks: {
-        jwt: ({ token, user }: { token: any, user: any }) => {
-            // first time jwt callback is run , user object is available
-            if (user) {
-                token.id = user.id;
-            }
-            return token;
-        },
-        session: ({ session, token }: { session: any, token: any }) => {
-            if (token) {
-                // session?.user.image = token.id;
-            }
-            return session;
-        },
-    },
-    secret: process.env.JWT_SECRET,
-};
-
+import NextAuth from "next-auth";
+import { authOptions } from "@/src/config/auth/nextAuth";
 
 const handler = NextAuth(authOptions);
-export { handler as GET, handler as POST };
+
+export { handler as GET, handler as POST }

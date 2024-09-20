@@ -5,7 +5,6 @@ import { useState } from 'react';
 import { signIn } from 'next-auth/react';
 
 export default function WelcomeAuth({ onClose }: any) {
-  const [showModal, setShowModal] = useState(false);
   const [userInfo, setUserInfo] = useState<{ email: string; password: string }>(
     {
       email: '',

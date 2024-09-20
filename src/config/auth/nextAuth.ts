@@ -1,4 +1,4 @@
-import NextAuth, { AuthOptions } from "next-auth";
+import { AuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 
 export const authOptions: AuthOptions = {
@@ -27,5 +27,4 @@ export const authOptions: AuthOptions = {
     },
     secret: process.env.JWT_SECRET,
 };
-export default NextAuth(authOptions);
 

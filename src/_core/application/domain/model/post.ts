@@ -1,14 +1,18 @@
+import PostAdditionalInfo from "./postAdditionalInfo";
+
 export default class Post {
   private id: string;
   private title: string;
   private content: string;
   private author: string;
+  private additionalInfo: PostAdditionalInfo;
 
-  constructor(title: string, content: string, author: string) {
+  constructor(title: string, content: string, author: string, additionalInfo: PostAdditionalInfo) {
     this.title = title;
     this.content = content;
     this.author = author;
     this.id = "";
+    this.additionalInfo = additionalInfo;
   }
 
   public getId() {
@@ -34,5 +38,11 @@ export default class Post {
   }
   public setAuthor(author: string) {
     this.author = author;
+  }
+  public getAdditionalInfo() {
+    return this.additionalInfo;
+  }
+  public setAdditionalInfor(additionalInfo: PostAdditionalInfo) {
+    this.additionalInfo = additionalInfo;
   }
 }
